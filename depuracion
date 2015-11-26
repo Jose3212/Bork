@@ -1,0 +1,44 @@
+In file included from include/juego.hpp:3:0,
+                 from src/main.cpp:1:
+include/mapa.hpp:9:22: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11
+     const int SIZE = 10;
+                      ^
+include/mapa.hpp:12:18: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11
+     bool juego = false; //Al principio no se juega;
+                  ^
+src/main.cpp: In function ‘int main()’:
+src/main.cpp:7:22: error: no matching function for call to ‘Jugador::Jugador(std::string&)’
+     Jugador j1(nombre);
+                      ^
+src/main.cpp:7:22: note: candidates are:
+In file included from include/mapa.hpp:5:0,
+                 from include/juego.hpp:3,
+                 from src/main.cpp:1:
+include/jugador.hpp:11:5: note: Jugador::Jugador(char*)
+     Jugador(char* nombre){this->nombre=nombre;}
+     ^
+include/jugador.hpp:11:5: note:   no known conversion for argument 1 from ‘std::string {aka std::basic_string<char>}’ to ‘char*’
+include/jugador.hpp:10:5: note: Jugador::Jugador()
+     Jugador(){};
+     ^
+include/jugador.hpp:10:5: note:   candidate expects 0 arguments, 1 provided
+include/jugador.hpp:5:7: note: Jugador::Jugador(const Jugador&)
+ class Jugador{
+       ^
+include/jugador.hpp:5:7: note:   no known conversion for argument 1 from ‘std::string {aka std::basic_string<char>}’ to ‘const Jugador&’
+src/main.cpp:13:31: error: could not convert ‘nombre.std::basic_string<_CharT, _Traits, _Alloc>::operator=<char, std::char_traits<char>, std::allocator<char> >(((const char*)"adelante"))’ from ‘std::basic_string<char>’ to ‘bool’
+         if(nombre = "adelante")mov = Jugador::ADELANTE;
+                               ^
+src/main.cpp:14:37: error: could not convert ‘nombre.std::basic_string<_CharT, _Traits, _Alloc>::operator=<char, std::char_traits<char>, std::allocator<char> >(((const char*)"retrocede"))’ from ‘std::basic_string<char>’ to ‘bool’
+         else if(nombre = "retrocede")mov = Jugador::RETROCEDE;
+                                     ^
+src/main.cpp:18:32: error: could not convert ‘nombre.std::basic_string<_CharT, _Traits, _Alloc>::operator=<char, std::char_traits<char>, std::allocator<char> >(((const char*)"gira"))’ from ‘std::basic_string<char>’ to ‘bool’
+         else if(nombre = "gira"){
+                                ^
+src/main.cpp:21:37: error: could not convert ‘nombre.std::basic_string<_CharT, _Traits, _Alloc>::operator=<char, std::char_traits<char>, std::allocator<char> >(((const char*)"izquierda"))’ from ‘std::basic_string<char>’ to ‘bool’
+             if (nombre = "izquierda")mov = Jugador::GIRA_IZQUIERDA;
+                                     ^
+src/main.cpp:22:35: error: could not convert ‘nombre.std::basic_string<_CharT, _Traits, _Alloc>::operator=<char, std::char_traits<char>, std::allocator<char> >(((const char*)"derecha"))’ from ‘std::basic_string<char>’ to ‘bool’
+             if (nombre = "derecha")mov = Jugador::GIRA_DERECHA;
+                                   ^
+make: *** [obj/main.o] Error 1
