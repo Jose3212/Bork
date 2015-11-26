@@ -9,6 +9,7 @@ TEMP = src/*~ include/*~
 OBJECTS=	$(SOURCES:src/%.cpp=obj/%.o)
 DAT	=	data
 INCLUDE = include
+CARPETAS=	include obj src bin data
 # banderas para el compilador (C y C++). Se indican los directorios donde se puenden
 # encontrar ficheros para incluir mediante la opcion -I
 # la opcion -g sirve para permitir la depuración
@@ -28,10 +29,12 @@ CC = g++ -Wno-write-strings
 
 # orden que sera ejecutada por defecto
 #
-default:	$(SOURCES) $(TARGETS)
+default:	$(CARPETAS) $(SOURCES) $(TARGETS)
 
 # regla de ejecucion
 #
+$(CARPETAS):
+	mkdir -f $(CARPETAS)
 $(TARGETS):	$(OBJECTS)	
 	$(CC) -o $@ $^ $(LDFLAGS)
 $(OBJECTS):
