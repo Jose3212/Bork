@@ -34,7 +34,7 @@ default:	$(CARPETAS) $(SOURCES) $(TARGETS)
 # regla de ejecucion
 #
 $(CARPETAS):
-	mkdir -f $(CARPETAS)
+	mkdir -p $(CARPETAS)
 $(TARGETS):	$(OBJECTS)	
 	$(CC) -o $@ $^ $(LDFLAGS)
 $(OBJECTS):
