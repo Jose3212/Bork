@@ -37,12 +37,13 @@ void Mapa::moverse(Jugador::movimiento direccion){
                 break;
         }
     }
-    else if (direccion == (Jugador::GIRA_IZQUIERDA||Jugador::GIRA_DERECHA)){
+    else if ((direccion == Jugador::GIRA_IZQUIERDA)||(direccion == Jugador::GIRA_DERECHA)){
         calcular_nueva_orientacion(direccion);
     }
     else {
         mapa_mensaje.fallo_movimiento(" Al moverse ");
     }
+    even1_principal.siguiente_evento(mapa[posicion_x][posicion_y]);
 }
 void Mapa::calcular_nueva_orientacion(Jugador::movimiento giro){
     switch (pos){
@@ -106,12 +107,21 @@ void Mapa::girar_oeste(Jugador::movimiento giro){
 }
 void Mapa::observar(){
     zonas izquierda, derecha, delante, detras;
+    int iz, der, del, det;
     izquierda = (Mapa::zonas) mapa[posicion_x -1][posicion_y];
     derecha = (Mapa::zonas) mapa[posicion_x +1][posicion_y];
     delante = (Mapa::zonas) mapa[posicion_x][posicion_y +1];
     detras = (Mapa::zonas) mapa[posicion_x][posicion_y -1];
-    mapa_mensaje.comenta_evento(izquierda);
-    mapa_mensaje.comenta_evento(derecha);
-    mapa_mensaje.comenta_evento(delante);
-    mapa_mensaje.comenta_evento(detras);
+    switch(pos){
+        case NORTE:
+            iz=0;
+            der=1;
+            
+        
+    }
+    mapa_mensaje.comenta_evento(izquierda, iz);
+    mapa_mensaje.comenta_evento(derecha, der);
+    mapa_mensaje.comenta_evento(delante, del);
+    mapa_mensaje.comenta_evento(detras, det);
+    
 }

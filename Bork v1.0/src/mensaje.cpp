@@ -8,7 +8,21 @@ void Mensaje::pierde(string j1){
 void Mensaje::fallo_movimiento(string dir){
     cout<<"El movimiento pedido " << dir << " no se ha podido realizar"<<endl;
 }
-void Mensaje::comenta_evento(int tipo){
+void Mensaje::comenta_evento(int tipo, int orientacion){
+    switch(orientacion){
+        case 0:
+            cout<<"A tu izquierda: ";
+            break;
+        case 1:
+            cout<<"A tu derecha: ";
+            break;
+        case 2:
+            cout<<"Delante: ";
+            break;
+        case 3:
+            cout<<"Detrás: ";
+            break;
+    }
     switch(tipo){
         case 0:
             cout<<"Encuentras vacío."<<endl;

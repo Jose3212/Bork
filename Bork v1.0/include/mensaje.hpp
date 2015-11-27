@@ -9,7 +9,7 @@ public:
     Mensaje();
     void pierde(string j1);
     void fallo_movimiento(string dir);
-    void comenta_evento(int tipo);
+    void comenta_evento(int tipo, int orientacion);
    void limite();
     void agua();
     void camino();
