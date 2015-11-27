@@ -6,7 +6,7 @@
 #include "evento.hpp"
 class Mapa{
 private:
-    const int SIZE = 10;
+    const int SIZE = 40;
     vector<vector<unsigned int > > mapa;
     int posicion_y, posicion_x;
     bool juego = false; //Al principio no se juega;

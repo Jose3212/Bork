@@ -1,9 +1,9 @@
 #include "mapa.hpp"
 Mapa::Mapa(){
-    mapa.reserve(10);
-        for(int i = 0; i < 10; i++)mapa[i].reserve(10);
-        for(int m = 0; m < 10; m++){
-            for(int n = 0; n < 10; n++){
+    mapa.reserve(SIZE);
+        for(int i = 0; i < SIZE; i++)mapa[i].reserve(SIZE);
+        for(int m = 0; m < SIZE; m++){
+            for(int n = 0; n < SIZE; n++){
                 if(m == 0)mapa[m][n]=0;
                 else if(n == 0)mapa[m][n]=0;
                 else if(m == SIZE-1)mapa[m][n]=0;
