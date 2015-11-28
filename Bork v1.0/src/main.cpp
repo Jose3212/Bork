@@ -10,7 +10,7 @@ int main(){
         cin>>nombre;
         //cout<<nombre<<endl;
         if(nombre == "adelante")j.interaccion(Jugador::ADELANTE);
-        //else if(nombre == "retrocede")j.interaccion(Jugador::RETROCEDE);
+        else if(nombre == "mapa")j.mapa();
         //else if(nombre = "huye")j.interaccion(HUYE);
         //else if(nombre = "nada")j.interaccion(NADA);
        // else if(nombre = "abre")j.interaccion(ABRE);

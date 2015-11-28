@@ -7,3 +7,6 @@ void Juego::interaccion(Jugador::movimiento direccion){
     m1.moverse(direccion);
     m1.observar();
 }
+void Juego::mapa(){
+    m1.muestra_mapa();
+}

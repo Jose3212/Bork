@@ -22,10 +22,10 @@ private:
     void girar_sur(Jugador::movimiento dir);
     void girar_oeste(Jugador::movimiento dir);
     void girar_este(Jugador::movimiento dir);
+    
 public:
     Mapa();
-    void inicia_juego(Jugador j1);
-    
+    void inicia_juego(Jugador j1);    
     void moverse(Jugador::movimiento direccion);
     void observar();
     enum zonas{
@@ -34,6 +34,8 @@ public:
         CAMINO = 2,
         BOSQUE = 3
     };
+    void genera(int &posx, int &posy, Mapa::zonas z);
     bool juego_en_marcha(){return juego;}
+    void muestra_mapa();
 };
 #endif

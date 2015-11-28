@@ -10,5 +10,6 @@ public:
     Juego( Jugador j1);
     void interaccion(Jugador::movimiento direccion);
     bool juego_en_marcha(){return m1.juego_en_marcha();}
+    void mapa();
 };
 #endif

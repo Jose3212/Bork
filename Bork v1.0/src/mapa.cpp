@@ -1,16 +1,50 @@
 #include "mapa.hpp"
 Mapa::Mapa(){
+    int random;
     mapa.reserve(SIZE);
         for(int i = 0; i < SIZE; i++)mapa[i].reserve(SIZE);
         for(int m = 0; m < SIZE; m++){
             for(int n = 0; n < SIZE; n++){
                 if(m == 0)mapa[m][n]=0;
                 else if(n == 0)mapa[m][n]=0;
-                else if(m == SIZE-1)mapa[m][n]=0;
-                else if(n == SIZE-1)mapa[m][n]=0;
-                else mapa[m][n]=rand()%3+1;
+                else if(m == (SIZE-1))mapa[m][n]=0;
+                else if(n == (SIZE-1))mapa[m][n]=0;
+                else {
+                    if((random= rand()%3 + 1)==1){
+                        genera(m,n,AGUA);
+                    }
+                    else if((random= rand()%3 + 1)==2){
+                        genera(m,n,BOSQUE);
+                    }
+                    else if(random= rand()%3 + 1==3){
+                        genera(m,n,CAMINO);
+                    }
+                }
             }
         }
+        for(int m = 1; m < SIZE-1; m++){
+            for(int n = 1; n < SIZE-1; n++){
+                if((mapa[m][n]!=AGUA)&&(mapa[m][n]!=BOSQUE)&&(mapa[m][n]!=CAMINO)){
+                    mapa[m][n]= rand()%3 + 1;
+                }
+            }
+        }
+}
+void Mapa::genera(int &posx, int &posy, Mapa::zonas z){
+    int anchura, altura;
+    anchura=rand()%8+1;
+    altura=rand()%8+1;
+    for(int i = posx; i < anchura; i++){
+        if(i<SIZE){
+            for(int j = posy; j < altura; j++){
+                if(j < SIZE){
+                    mapa[i][j]=z;
+                    posx=i;
+                    posy=j;
+                }
+            }
+        }
+    }
 }
 void Mapa::inicia_juego(Jugador j1){
     this -> j1= j1;
@@ -120,10 +154,10 @@ void Mapa::girar_oeste(Jugador::movimiento giro){
 void Mapa::observar(){
     zonas izquierda, derecha, delante, detras;
     int iz, der, del, det;
-    izquierda = (Mapa::zonas) mapa[posicion_x -1][posicion_y];
-    derecha = (Mapa::zonas) mapa[posicion_x +1][posicion_y];
-    delante = (Mapa::zonas) mapa[posicion_x][posicion_y +1];
-    detras = (Mapa::zonas) mapa[posicion_x][posicion_y -1];
+    if(posicion_x>0)izquierda = (Mapa::zonas) mapa[posicion_x -1][posicion_y];
+    if(posicion_x<SIZE)derecha = (Mapa::zonas) mapa[posicion_x +1][posicion_y];
+    if(posicion_y<SIZE)delante = (Mapa::zonas) mapa[posicion_x][posicion_y +1];
+    if(posicion_y>0)detras = (Mapa::zonas) mapa[posicion_x][posicion_y -1];
     switch(pos){
         case NORTE:
             iz=0;
@@ -155,4 +189,13 @@ void Mapa::observar(){
     mapa_mensaje.comenta_evento(delante, del);
     mapa_mensaje.comenta_evento(detras, det);
     
+}
+void Mapa::muestra_mapa(){
+    for(int i = 0; i < SIZE; i++){
+        cout << " ";
+        for(int j = 0; j < SIZE; j++){
+            cout << mapa[i][j] << "-";
+        }
+        cout<< endl;
+    }
 }
