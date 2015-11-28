@@ -6,11 +6,11 @@ int main(){
     Jugador j1(nombre);
     Juego j(j1);
     while(j.juego_en_marcha()){
-        cout<<"Introduzca accion"<<endl;
+        cout<<"Introduzca accion: "<< j1.get_nombre()<<endl;
         cin>>nombre;
         //cout<<nombre<<endl;
         if(nombre == "adelante")j.interaccion(Jugador::ADELANTE);
-        else if(nombre == "retrocede")j.interaccion(Jugador::RETROCEDE);
+        //else if(nombre == "retrocede")j.interaccion(Jugador::RETROCEDE);
         //else if(nombre = "huye")j.interaccion(HUYE);
         //else if(nombre = "nada")j.interaccion(NADA);
        // else if(nombre = "abre")j.interaccion(ABRE);

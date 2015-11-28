@@ -8,7 +8,7 @@ Mapa::Mapa(){
                 else if(n == 0)mapa[m][n]=0;
                 else if(m == SIZE-1)mapa[m][n]=0;
                 else if(n == SIZE-1)mapa[m][n]=0;
-                else mapa[m][n]=rand()%4;
+                else mapa[m][n]=rand()%3+1;
             }
         }
 }
@@ -24,16 +24,28 @@ void Mapa::moverse(Jugador::movimiento direccion){
     if (direccion == Jugador::ADELANTE){
         switch (pos){
             case NORTE:
-                posicion_y++;
+                if(posicion_y<SIZE){
+                    posicion_y++;
+                }
+                else mapa_mensaje.fallo_movimiento(" Fuera de Rango ");
                 break;
             case SUR:
-                posicion_y--;
+                if(posicion_y>0){
+                    posicion_y--;
+                }
+                else mapa_mensaje.fallo_movimiento(" Fuera de Rango ");
                 break;
             case OESTE:
-                posicion_x--;
+                if(posicion_x>0){
+                    posicion_x--;
+                }
+                else mapa_mensaje.fallo_movimiento(" Fuera de Rango ");
                 break;
             case ESTE:
-                posicion_x++;
+                if(posicion_x<SIZE){
+                    posicion_x++;
+                }
+                else mapa_mensaje.fallo_movimiento(" Fuera de Rango ");
                 break;
         }
     }
