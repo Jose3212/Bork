@@ -5,7 +5,7 @@ void Jugador::pierde(){
 string Jugador::get_nombre(){
     return nombre;
 }
-void Jugador::aniade_inventario(Objeto o1){
+void Jugador::aniade_a_inventario(Objeto o1){
     if(inventario.size()<max_obj){
         inventario.push_back(o1);
     }
@@ -24,13 +24,6 @@ void Jugador::elimina_de_inventario(int posicion){
     inventario.clear();
     inventario.swap(aux);
 }
-void Jugador::usar(Objeto o1){
-    vector<Objeto>::iterator it;
-    it= find(inventario.begin(),inventario.end(),o1);
-    if (it != inventario.end()){
-        (*it).uso();
-    }
-    else{
-        jugador_mensaje.no_posees_objeto();
-    }
+void Jugador::equipa(Objeto o1){
+    equipado = o1;
 }

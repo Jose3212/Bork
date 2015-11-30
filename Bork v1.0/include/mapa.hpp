@@ -1,6 +1,5 @@
 #ifndef _MAPA
 #define _MAPA
-#include <vector>
 #include <cstdlib>
 #include "jugador.hpp"
 #include "evento.hpp"

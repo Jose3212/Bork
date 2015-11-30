@@ -1,1 +1,0 @@
-#include "objeto.hpp"
