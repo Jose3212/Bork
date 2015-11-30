@@ -60,3 +60,19 @@ void Mensaje::inventario_lleno(){
 void Mensaje::no_posees_objeto(){
     cout<<"No posees el objeto que quieres usar"<<endl;
 }
+void Mensaje::ataca_monstruo(int danio){
+    cout<<"El monstruo te inglige: "<< danio<<endl;
+}
+void Mensaje::atacas_monstruo(int danio){
+    cout<<"Infliges: "<<danio<<" puntos al monstruo"<<endl;
+}
+void Mensaje::combate_ganado(){
+    cout<<"Has ganado el combate"<<endl;
+}
+void Mensaje::combate_perdido(){
+    cout<<"Has muerto"<<endl;
+}
+void Mensaje::vidas(int jugador, int monstruo){
+    cout<<"Tienes: "<<jugador<<" puntos de vida."<<endl;
+    cout<<"El monstruo tiene: "<<monstruo<<" puntos de vida."<<endl;
+}

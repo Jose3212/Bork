@@ -17,5 +17,10 @@ public:
     void aparece_monstruo();
     void inventario_lleno();
     void no_posees_objeto();
+    void ataca_monstruo(int danio);
+    void atacas_monstruo(int danio);
+    void combate_ganado();
+    void combate_perdido();
+    void vidas(int jugador, int monstruo);
 };
 #endif

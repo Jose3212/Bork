@@ -3,6 +3,7 @@
 #include <cstdlib>
 #include "jugador.hpp"
 #include "evento.hpp"
+#include "monstruo.hpp"
 class Mapa{
 private:
     const int SIZE = 40;

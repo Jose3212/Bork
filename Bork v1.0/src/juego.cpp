@@ -36,3 +36,29 @@ void Juego::usa(Objeto o1){
         m2.no_posees_objeto();
     }
 }
+bool Juego::combate(Monstruo mons){
+    int ataque_j, ataque_m;
+    int hp_batalla = j1.get_hp();
+    Objeto equipo = j1.get_equipo();
+    ataque_j = j1.get_ataque();
+    if(equipo.get_tipo()==Objeto::ARMA){
+        ataque_j *= 5; 
+    }
+    while(hp_batalla > 0){
+        ataque_m = mons.ataca();
+        m2.ataca_monstruo(ataque_m);
+        hp_batalla-=ataque_m;
+        m2.atacas_monstruo(ataque_j);
+        mons.daniado(ataque_j);
+        m2.vidas(hp_batalla, mons.get_hp());
+        if(mons.get_hp()<=0)break;
+    }
+    if(hp_batalla > 0){
+        m2.combate_ganado();
+        return true;
+    }
+    else{
+        m2.combate_perdido();
+        return false;
+    }
+}

@@ -13,6 +13,8 @@ private:
     Objeto equipado;
     int num_tesoros = 0;
     int max_obj = 5;
+    int hp;
+    int ataque = 2;
 public:
     Jugador(){};
     Jugador(string nombre){this->nombre=nombre;}
@@ -30,5 +32,8 @@ public:
     void usar(Objeto o1);
     string get_nombre();
     vector<Objeto> get_inventario(){return inventario;}
+    int get_hp(){return hp;}
+    Objeto get_equipo(){return equipado;}
+    int get_ataque(){return ataque;}
 };
 #endif

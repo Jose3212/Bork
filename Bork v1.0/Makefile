@@ -4,7 +4,7 @@
 #
 TARGETS= ./bin/Bork
 
-SOURCES=	src/jugador.cpp src/main.cpp src/evento.cpp src/juego.cpp src/mapa.cpp src/mensaje.cpp
+SOURCES=	src/jugador.cpp src/main.cpp src/evento.cpp src/juego.cpp src/mapa.cpp src/mensaje.cpp src/monstruo.cpp
 TEMP = src/*~ include/*~
 OBJECTS=	$(SOURCES:src/%.cpp=obj/%.o)
 DAT	=	data
