@@ -8,7 +8,7 @@ private:
     Mensaje m2;
 public:
     Juego( Jugador j1);
-    void interaccion(Jugador::movimiento direccion);
+    void moverse(Jugador::movimiento direccion);
     bool juego_en_marcha(){return m1.juego_en_marcha();}
     void mapa();
 };

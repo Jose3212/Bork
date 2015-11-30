@@ -54,3 +54,9 @@ void Mensaje::aparece_monstruo(){
 void Mensaje::limite(){
     cout<<"Estas en la nada"<<endl;
 }
+void Mensaje::inventario_lleno(){
+    cout<<"El inventario de objetos está lleno."<<endl;
+}
+void Mensaje::no_posees_objeto(){
+    cout<<"No posees el objeto que quieres usar"<<endl;
+}
