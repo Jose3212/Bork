@@ -1,8 +1,7 @@
 %{
     #include "juego.hpp"
     string direc;
-    Jugador j1("Jugador");
-    Juego j(j1);
+    Juego j;
 %}
 uso (usar|uso|equipar)
 girar   (giro|girar)
@@ -24,6 +23,10 @@ huye    (huir|huyo|corro)
 %%
 
 int main(){
+    cout<<"Introduce nombre jugador: ";
+    cin>> direc;
+    Jugador j1(direc);
+    j.aniade_jugador(j1);
     yyin = stdin;
     while (j.juego_en_marcha()){
         j.mostrar_inventario();

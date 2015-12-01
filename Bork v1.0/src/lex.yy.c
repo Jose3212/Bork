@@ -480,9 +480,8 @@ char *yytext;
 #line 2 "main.l"
     #include "juego.hpp"
     string direc;
-    Jugador j1("Jugador");
-    Juego j(j1);
-#line 486 "lex.yy.c"
+    Juego j;
+#line 485 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -696,10 +695,10 @@ YY_DECL
 		}
 
 	{
-#line 12 "main.l"
+#line 11 "main.l"
 
 
-#line 703 "lex.yy.c"
+#line 702 "lex.yy.c"
 
 	while ( 1 )		/* loops until end-of-file is reached */
 		{
@@ -758,22 +757,22 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 14 "main.l"
+#line 13 "main.l"
 {Objeto o(2);j.usa(o);}
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 15 "main.l"
+#line 14 "main.l"
 {Objeto o(1);j.usa(o);}
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 16 "main.l"
+#line 15 "main.l"
 {j.moverse(Jugador::ADELANTE);}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 17 "main.l"
+#line 16 "main.l"
 {
     cout << "¿Donde?" << endl;
     cin >> direc;
@@ -783,10 +782,10 @@ YY_RULE_SETUP
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 24 "main.l"
+#line 23 "main.l"
 ECHO;
 	YY_BREAK
-#line 790 "lex.yy.c"
+#line 789 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1781,11 +1780,15 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 23 "main.l"
+#line 22 "main.l"
 
 
 
 int main(){
+    cout<<"Introduce nombre jugador: ";
+    cin>> direc;
+    Jugador j1(direc);
+    j.aniade_jugador(j1);
     yyin = stdin;
     while (j.juego_en_marcha()){
         j.mostrar_inventario();

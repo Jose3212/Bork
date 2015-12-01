@@ -97,17 +97,17 @@ void Mensaje::puntuacion(int tesoros){
 void Mensaje::encuentras_espada(){
     cout<<"Encuentras una espada, eres más eficiente combatiendo."<<endl;
 }
-string wait(){
+string Mensaje::wait(){
     string uno;
     cout<< "¿Que haces?" << endl;
     cin >> uno;
     return uno;
 }
-void escapas(){
+void Mensaje::escapas(){
     cout<< "Consigues escapar del combate"<<endl;
 }
-void mostrar_inventario(vector <Objeto> ob){
+void Mensaje::mostrar_inventario(vector <Objeto> ob){
     cout<< "El inventario es: ";
-    for(int i=0; i < ob.size();i++)cout<<ob[i].to_char()<<" , ";
+    for(int i=0; i < ob.size();i++){cout<<ob[i].to_char()<<" , ";}
     cout<<endl;
 }

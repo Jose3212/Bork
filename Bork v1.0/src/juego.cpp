@@ -3,6 +3,10 @@ Juego::Juego(Jugador j1){
     this->j1 = j1;
     m1.inicia_juego(j1);
 }
+void Juego::aniade_jugador(Jugador j1){
+    this->j1 = j1;
+    m1.inicia_juego(j1);
+}
 void Juego::mostrar_inventario(){
     m2.mostrar_inventario(j1.get_inventario());
 }
@@ -14,14 +18,25 @@ void Juego::moverse(Jugador::movimiento direccion){
     if (opcion == 0)m1.observar();
     else if(opcion == 1){
         Monstruo mons(rand()%20+1,rand()%5+1);
-        combate_r = combate(mons);
-        if (combate_r){
-            m2.ganas_tesoro();
-            j1.aniade_tesoro();
+        string accion;
+        accion = m2.wait();
+        if (accion == "huye"){
+            if(rand()%4+1==4){
+                m2.escapas();
+            }
+            else goto combate;
         }
-        else {
-            j1.pierde();
-            m1.fin_juego();
+        else{
+            combate:
+            combate_r = combate(mons);
+            if (combate_r){
+                m2.ganas_tesoro();
+                j1.aniade_tesoro();
+            }
+            else {
+                j1.pierde();
+                m1.fin_juego();
+            }
         }
     }
     else if(opcion == 2){
@@ -36,29 +51,19 @@ void Juego::moverse(Jugador::movimiento direccion){
     }
     else if(opcion == 4){
         Monstruo mons(50,6);
-        string accion;
-        accion = m2.wait();
-        if (accion == "huye"){
-            if(rand()%4+1==4){
-                m2.escapas();
-            }
-            else goto combate;
+        combate_r = combate(mons);
+        if(combate_r){
+            llave = true;
+            m2.has_ganado();
+            m2.puntuacion(j1.get_tesoros());
+            m1.fin_juego();
         }
         else{
-            combate:
-            combate_r = combate(mons);
-            if(combate_r){
-                llave = true;
-                m2.has_ganado();
-                m2.puntuacion(j1.get_tesoros());
-                m1.fin_juego();
-            }
-            else{
-                j1.pierde();
-                m1.fin_juego();
-            }
+            j1.pierde();
+            m1.fin_juego();
         }
     }
+
     else if(opcion == 5){
         m2.encuentras_espada();
         j1.aniade_a_inventario(espada);

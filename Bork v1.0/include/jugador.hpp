@@ -4,7 +4,6 @@
 #include <algorithm>
 #include <vector>
 #include "mensaje.hpp"
-#include "objeto.hpp"
 class Jugador{
 private:
     string nombre;
