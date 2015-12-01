@@ -369,8 +369,8 @@ static void yy_fatal_error (yyconst char msg[]  );
 	*yy_cp = '\0'; \
 	(yy_c_buf_p) = yy_cp;
 
-#define YY_NUM_RULES 2
-#define YY_END_OF_BUFFER 3
+#define YY_NUM_RULES 5
+#define YY_END_OF_BUFFER 6
 /* This struct is not used in this scanner,
    but its presence is necessary. */
 struct yy_trans_info
@@ -378,10 +378,12 @@ struct yy_trans_info
 	flex_int32_t yy_verify;
 	flex_int32_t yy_nxt;
 	};
-static yyconst flex_int16_t yy_accept[16] =
+static yyconst flex_int16_t yy_accept[40] =
     {   0,
-        0,    0,    3,    2,    2,    2,    0,    0,    0,    0,
-        1,    0,    0,    0,    0
+        0,    0,    6,    5,    5,    5,    5,    5,    0,    0,
+        0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
+        4,    0,    0,    0,    0,    0,    0,    0,    0,    0,
+        0,    0,    0,    3,    0,    1,    0,    2,    0
     } ;
 
 static yyconst flex_int32_t yy_ec[256] =
@@ -389,16 +391,16 @@ static yyconst flex_int32_t yy_ec[256] =
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    2,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    1,    2,    1,    1,    1,
+        1,    1,    1,    1,    1,    1,    3,    1,    1,    4,
 
-        3,    1,    1,    1,    4,    1,    1,    1,    1,    1,
-        5,    6,    7,    8,    9,    1,   10,    1,    1,    1,
+        5,    1,    6,    1,    7,    1,    1,    8,    9,   10,
+       11,   12,   13,   14,   15,   16,   17,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
@@ -416,37 +418,48 @@ static yyconst flex_int32_t yy_ec[256] =
         1,    1,    1,    1,    1
     } ;
 
-static yyconst flex_int32_t yy_meta[11] =
+static yyconst flex_int32_t yy_meta[18] =
     {   0,
-        1,    1,    1,    1,    1,    1,    1,    1,    1,    1
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,    1,    1,    1,    1,    1
     } ;
 
-static yyconst flex_int16_t yy_base[17] =
+static yyconst flex_int16_t yy_base[41] =
     {   0,
-        0,    8,   20,   23,   10,    7,    5,   17,   10,    5,
-       23,    6,    7,    0,   23,    0
+        0,   15,   44,   45,   39,   29,   34,   25,   34,   21,
+       23,    1,   28,   28,    4,   20,   31,   28,   18,   15,
+       45,    4,   18,   24,   11,   22,    8,    9,   10,    7,
+       11,   11,    8,   45,    6,   45,    5,   45,   45,    0
     } ;
 
-static yyconst flex_int16_t yy_def[17] =
+static yyconst flex_int16_t yy_def[41] =
     {   0,
-       16,   16,   15,   15,   15,   15,   15,   15,   15,   15,
-       15,   15,   15,   15,    0,   15
+       40,   40,   39,   39,   39,   39,   39,   39,   39,   39,
+       39,   39,   39,   39,   39,   39,   39,   39,   39,   39,
+       39,   39,   39,   39,   39,   39,   39,   39,   39,   39,
+       39,   39,   39,   39,   39,   39,   39,   39,    0,   39
     } ;
 
-static yyconst flex_int16_t yy_nxt[34] =
+static yyconst flex_int16_t yy_nxt[63] =
     {   0,
-        4,   15,    5,   15,   15,   15,   15,   11,   14,    6,
-        5,   13,   11,   12,    9,    8,    7,    6,   10,   15,
-       15,   11,    3,   15,   15,   15,   15,   15,   15,   15,
-       15,   15,   15
+        4,   39,    5,   16,    6,    7,   20,   38,   25,   37,
+       36,   17,   26,   35,   21,   34,    8,    5,   33,    6,
+        7,   32,   17,   31,   30,   29,   28,   27,   21,   24,
+       23,    8,   22,   17,   19,   18,   15,   14,   13,   12,
+       11,   10,    9,   39,    3,   39,   39,   39,   39,   39,
+       39,   39,   39,   39,   39,   39,   39,   39,   39,   39,
+       39,   39
     } ;
 
-static yyconst flex_int16_t yy_chk[34] =
+static yyconst flex_int16_t yy_chk[63] =
     {   0,
-       16,    0,    1,    0,    0,    0,    0,   14,   13,    1,
-        2,   12,   10,    9,    7,    6,    5,    2,    8,    3,
-        0,    8,   15,   15,   15,   15,   15,   15,   15,   15,
-       15,   15,   15
+       40,    0,    1,   12,    1,    1,   15,   37,   22,   35,
+       33,   12,   22,   32,   15,   31,    1,    2,   30,    2,
+        2,   29,   28,   27,   26,   25,   24,   23,   20,   19,
+       18,    2,   17,   16,   14,   13,   11,   10,    9,    8,
+        7,    6,    5,    3,   39,   39,   39,   39,   39,   39,
+       39,   39,   39,   39,   39,   39,   39,   39,   39,   39,
+       39,   39
     } ;
 
 static yy_state_type yy_last_accepting_state;
@@ -466,7 +479,10 @@ char *yytext;
 #line 1 "main.l"
 #line 2 "main.l"
     #include "juego.hpp"
-#line 470 "lex.yy.c"
+    string direc;
+    Jugador j1("Jugador");
+    Juego j(j1);
+#line 486 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -680,10 +696,10 @@ YY_DECL
 		}
 
 	{
-#line 10 "main.l"
+#line 12 "main.l"
 
 
-#line 687 "lex.yy.c"
+#line 703 "lex.yy.c"
 
 	while ( 1 )		/* loops until end-of-file is reached */
 		{
@@ -710,13 +726,13 @@ yy_match:
 			while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 				{
 				yy_current_state = (int) yy_def[yy_current_state];
-				if ( yy_current_state >= 16 )
+				if ( yy_current_state >= 40 )
 					yy_c = yy_meta[(unsigned int) yy_c];
 				}
 			yy_current_state = yy_nxt[yy_base[yy_current_state] + (unsigned int) yy_c];
 			++yy_cp;
 			}
-		while ( yy_base[yy_current_state] != 23 );
+		while ( yy_base[yy_current_state] != 45 );
 
 yy_find_action:
 		yy_act = yy_accept[yy_current_state];
@@ -742,15 +758,35 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 12 "main.l"
-{}  
+#line 14 "main.l"
+{Objeto o(2);j.usa(o);}
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 14 "main.l"
+#line 15 "main.l"
+{Objeto o(1);j.usa(o);}
+	YY_BREAK
+case 3:
+YY_RULE_SETUP
+#line 16 "main.l"
+{j.moverse(Jugador::ADELANTE);}
+	YY_BREAK
+case 4:
+YY_RULE_SETUP
+#line 17 "main.l"
+{
+    cout << "¿Donde?" << endl;
+    cin >> direc;
+    if (direc=="izquierda"){j.moverse(Jugador::GIRA_IZQUIERDA);}
+    else {j.moverse(Jugador::GIRA_DERECHA);}
+    }
+	YY_BREAK
+case 5:
+YY_RULE_SETUP
+#line 24 "main.l"
 ECHO;
 	YY_BREAK
-#line 754 "lex.yy.c"
+#line 790 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1043,7 +1079,7 @@ static int yy_get_next_buffer (void)
 		while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 			{
 			yy_current_state = (int) yy_def[yy_current_state];
-			if ( yy_current_state >= 16 )
+			if ( yy_current_state >= 40 )
 				yy_c = yy_meta[(unsigned int) yy_c];
 			}
 		yy_current_state = yy_nxt[yy_base[yy_current_state] + (unsigned int) yy_c];
@@ -1071,11 +1107,11 @@ static int yy_get_next_buffer (void)
 	while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 		{
 		yy_current_state = (int) yy_def[yy_current_state];
-		if ( yy_current_state >= 16 )
+		if ( yy_current_state >= 40 )
 			yy_c = yy_meta[(unsigned int) yy_c];
 		}
 	yy_current_state = yy_nxt[yy_base[yy_current_state] + (unsigned int) yy_c];
-	yy_is_jam = (yy_current_state == 15);
+	yy_is_jam = (yy_current_state == 39);
 
 		return yy_is_jam ? 0 : yy_current_state;
 }
@@ -1745,19 +1781,15 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 13 "main.l"
+#line 23 "main.l"
 
 
 
 int main(){
     yyin = stdin;
-    string Nombre;
-    cout<<"Introduzca nombre jugador: ";
-    cin>>Nombre;
-    Jugador j1(Nombre);
-    Juego j(j1);
     while (j.juego_en_marcha()){
-        cout<<"Introduzca accion: "<< j1.get_nombre()<<endl;
+        j.mostrar_inventario();
+        cout<<"Introduzca accion: "<<endl;
         yylex();
     }
 }

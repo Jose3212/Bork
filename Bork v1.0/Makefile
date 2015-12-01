@@ -8,7 +8,7 @@ SOURCES=	src/jugador.cpp src/evento.cpp src/juego.cpp src/mapa.cpp src/mensaje.c
 TEMP = src/*~ include/*~
 OBJ_LEX=	obj/main.o
 SOURCE_LEX=	src/lex.yy.c
-LEX=  src/main.l
+LEX=  main.l
 OBJECTS=	$(SOURCES:src/%.cpp=obj/%.o)
 DAT	=	data
 INCLUDE = include
@@ -47,6 +47,7 @@ $(OBJECTS):
 	$(CC) $(CXXFLAGS) src/$(@F:.o=.cpp) -o $@
 $(SOURCE_LEX):	$(LEX)
 	lex	$^
+	mv lex.yy.c src/
 
 .PHONY: depuracion
 depuracion :
