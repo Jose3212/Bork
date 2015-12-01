@@ -5,11 +5,11 @@ Evento::Evento(){
 int Evento::revela_evento(){
     int monstruo = 0;
     if (tipo == 4){
-        if(rand()%20==20){
+        if(rand()%20+1==20){
             mensaje_evento.aparece_monstruo();
             monstruo = 1;
         }
-        else if(rand()%4==4){
+        else if(rand()%4+1==4){
             monstruo=5;
         }
         else {

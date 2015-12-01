@@ -12,11 +12,11 @@ private:
     Objeto equipado;
     int num_tesoros = 0;
     int max_obj = 5;
-    int hp;
+    int hp = 50;
     int ataque = 2;
 public:
     Jugador(){};
-    Jugador(string nombre){this->nombre=nombre;}
+    Jugador(string nombre){this->nombre=nombre;inventario.reserve(max_obj);}
     enum acciones{
         LUCHA,HUYE,NADA,ABRE,USA
     };

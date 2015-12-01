@@ -17,5 +17,8 @@ public:
     void mapa();
     bool combate(Monstruo mons);
     void mostrar_inventario();
+    void salir();
+    string get_nombre(){j1.get_nombre();}
+    void opciones();
 };
 #endif

@@ -10,32 +10,37 @@ Mapa::Mapa(){
                 else if(m == (SIZE-1))mapa[m][n]=0;
                 else if(n == (SIZE-1))mapa[m][n]=0;
                 else {
-                    if((random= rand()%3 + 1)==1){
-                        genera(m,n,AGUA);
+                    random= rand()%4 + 1;
+                    if(random==1){
+                        mapa[m][n]=AGUA;
                     }
-                    else if((random= rand()%3 + 1)==2){
-                        genera(m,n,BOSQUE);
+                    else if(random==2){
+                        mapa[m][n]=BOSQUE;
                     }
-                    else if(random= rand()%3 + 1==3){
-                        genera(m,n,CAMINO);
+                    else if(random==3){
+                        mapa[m][n]=CAMINO;
+                    }
+                    else if(random==4){
+                        mapa[m][n]=TESORO;
                     }
                 }
             }
         }
+        /*
         for(int m = 1; m < SIZE-1; m++){
             for(int n = 1; n < SIZE-1; n++){
                 if((mapa[m][n]!=AGUA)&&(mapa[m][n]!=BOSQUE)&&(mapa[m][n]!=CAMINO)){
                     mapa[m][n]= rand()%3 + 1;
                 }
             }
-        }
+        }/*
         for(int m = 1; m < SIZE-1; m++){
             for(int n = 1; n < SIZE-1; n++){
                 if((rand()%10)==10){
                     mapa[m][n]=TESORO;
                 }
             }
-        }
+        }*/
         mapa[rand()%(SIZE-1)+1][rand()%(SIZE-1)+1]=ESPECIAL1;
         mapa[rand()%(SIZE-1)+1][rand()%(SIZE-1)+1]=ESPECIAL2;
 }
@@ -68,26 +73,26 @@ int Mapa::moverse(Jugador::movimiento direccion){
     if (direccion == Jugador::ADELANTE){
         switch (pos){
             case NORTE:
-                if(posicion_y<SIZE){
-                    posicion_y++;
-                }
-                else mapa_mensaje.fallo_movimiento(" Fuera de Rango ");
-                break;
-            case SUR:
-                if(posicion_y>0){
-                    posicion_y--;
-                }
-                else mapa_mensaje.fallo_movimiento(" Fuera de Rango ");
-                break;
-            case OESTE:
                 if(posicion_x>0){
                     posicion_x--;
                 }
                 else mapa_mensaje.fallo_movimiento(" Fuera de Rango ");
                 break;
-            case ESTE:
+            case SUR:
                 if(posicion_x<SIZE){
                     posicion_x++;
+                }
+                else mapa_mensaje.fallo_movimiento(" Fuera de Rango ");
+                break;
+            case OESTE:
+                if(posicion_y>0){
+                    posicion_y--;
+                }
+                else mapa_mensaje.fallo_movimiento(" Fuera de Rango ");
+                break;
+            case ESTE:
+                if(posicion_y<SIZE){
+                    posicion_y++;
                 }
                 else mapa_mensaje.fallo_movimiento(" Fuera de Rango ");
                 break;
@@ -165,34 +170,34 @@ void Mapa::girar_oeste(Jugador::movimiento giro){
 void Mapa::observar(){
     zonas izquierda, derecha, delante, detras;
     int iz, der, del, det;
-    if(posicion_x>0)izquierda = (Mapa::zonas) mapa[posicion_x -1][posicion_y];
-    if(posicion_x<SIZE)derecha = (Mapa::zonas) mapa[posicion_x +1][posicion_y];
-    if(posicion_y<SIZE)delante = (Mapa::zonas) mapa[posicion_x][posicion_y +1];
-    if(posicion_y>0)detras = (Mapa::zonas) mapa[posicion_x][posicion_y -1];
+    if(posicion_y>0)izquierda = (Mapa::zonas) mapa[posicion_x][posicion_y-1];
+    if(posicion_y<SIZE)derecha = (Mapa::zonas) mapa[posicion_x][posicion_y+1];
+    if(posicion_x<SIZE)delante = (Mapa::zonas) mapa[posicion_x+1][posicion_y];
+    if(posicion_x>0)detras = (Mapa::zonas) mapa[posicion_x-1][posicion_y];
     switch(pos){
         case NORTE:
             iz=0;
-            der=1;
-            del=2;
+            der=2;
+            del=1;
             det=3;
             break;
         case OESTE:
-            iz=2;
-            der=3;
-            del=1;
-            det=0;
-            break;
-        case SUR:
-            iz=1;
-            der=0;
-            del=3;
+            iz=3;
+            der=1;
+            del=0;
             det=2;
             break;
-        case ESTE:
-            iz=3;
-            der=2;
-            del=0;
+        case SUR:
+            iz=2;
+            der=0;
+            del=3;
             det=1;
+            break;
+        case ESTE:
+            iz=1;
+            der=3;
+            del=2;
+            det=0;
             break;        
     }
     mapa_mensaje.comenta_evento(izquierda, iz);

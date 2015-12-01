@@ -15,8 +15,8 @@ void Juego::moverse(Jugador::movimiento direccion){
     Objeto mapa(2),llave(4),espada(1);
     bool combate_r;
     opcion=m1.moverse(direccion);
-    if (opcion == 0)m1.observar();
-    else if(opcion == 1){
+    //if (opcion == 0)m1.observar();
+    if(opcion == 1){
         Monstruo mons(rand()%20+1,rand()%5+1);
         string accion;
         accion = m2.wait();
@@ -68,23 +68,29 @@ void Juego::moverse(Jugador::movimiento direccion){
         m2.encuentras_espada();
         j1.aniade_a_inventario(espada);
     }
+    m1.observar();
 }
 void Juego::mapa(){
     m1.muestra_mapa();
 }
 void Juego::usa(Objeto o1){
+//   cout<<"1"<<endl;
     Objeto::tipo map, weap, t;
     map = Objeto::MAPA;
     weap = Objeto::ARMA;
     vector<Objeto> aux;
+//    cout<<"1"<<endl;
     aux = j1.get_inventario();
-    int it;
+//    cout<<"1"<<endl;
+    int it = -1;
+//   cout<<"1"<<endl;
     for (int i = 0; i < aux.size(); i++){
         if (aux[i]==o1){
             it = i;
         }
         else it = -1;
     }
+//    cout<<"1"<<endl;
     if(it != -1){
         t=aux[it].get_tipo();
         if(t == map){
@@ -123,4 +129,11 @@ bool Juego::combate(Monstruo mons){
         m2.combate_perdido();
         return false;
     }
+}
+void Juego::salir(){
+    m1.fin_juego();
+}
+void Juego::opciones(){
+    mostrar_inventario();
+    cout << "Introduzca accion: "<< j1.get_nombre() <<endl;
 }

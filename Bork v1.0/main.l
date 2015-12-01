@@ -2,35 +2,39 @@
     #include "juego.hpp"
     string direc;
     Juego j;
+    int juega();
+    Objeto mapa(2), espada(1);
 %}
-uso (usar|uso|equipar)
-girar   (giro|girar)
+uso (usar|uso|equipar|usa)
+girar   (giro|girar|gira)
 direccion   (izquierda|derecha)
 huye    (huir|huyo|corro)
-
+avanzar (delante|adelante)
+detras (detras|atras)
+salir (salir|Salir|exit|quit)
 %%
-
-{uso}" mapa"   {Objeto o(2);j.usa(o);}
-{uso}" espada"  {Objeto o(1);j.usa(o);}
-"adelante"  {j.moverse(Jugador::ADELANTE);}
+{uso}" mapa"   {j.usa(mapa);return 0;}
+{uso}" espada"  {j.usa(espada);return 0;}
+{avanzar}  {j.moverse(Jugador::ADELANTE);return 0;}
 {girar} {
     cout << "¿Donde?" << endl;
     cin >> direc;
     if (direc=="izquierda"){j.moverse(Jugador::GIRA_IZQUIERDA);}
     else {j.moverse(Jugador::GIRA_DERECHA);}
+    return 0;
     }
-
+{detras}    {cout<<"No se puede ir hacia atras, gire hasta la posicion deseada"<<endl;return 0;}
+{salir} {j.salir();return 0;}
 %%
 
 int main(){
-    cout<<"Introduce nombre jugador: ";
-    cin>> direc;
+    cout <<"Introduce nombre jugador: ";
+    cin >> direc;
     Jugador j1(direc);
     j.aniade_jugador(j1);
     yyin = stdin;
     while (j.juego_en_marcha()){
-        j.mostrar_inventario();
-        cout<<"Introduzca accion: "<<endl;
+        j.opciones();
         yylex();
     }
 }
