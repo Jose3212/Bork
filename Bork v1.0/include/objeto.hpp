@@ -14,6 +14,16 @@ public:
         else if (n == 4)t=LLAVE;
     }
     tipo get_tipo(){return t;}
+    char * to_char(){
+        switch(t){
+        case ARMA:
+            return "arma";
+            break;
+        case MAPA:
+            return "tesoro";
+            break;
+        }
+    }
     bool operator==(Objeto o1){if (t==o1.get_tipo())return true;else return false;}
 private:
     tipo t;

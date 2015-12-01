@@ -6,6 +6,7 @@ TARGETS= ./bin/Bork
 
 SOURCES=	src/jugador.cpp src/evento.cpp src/juego.cpp src/mapa.cpp src/mensaje.cpp src/monstruo.cpp
 TEMP = src/*~ include/*~
+OBJ_LEX=	obj/main.o
 SOURCE_LEX=	src/lex.yy.c
 LEX=  src/main.l
 OBJECTS=	$(SOURCES:src/%.cpp=obj/%.o)
@@ -27,24 +28,25 @@ LDFLAGS=  -lfl
 
 # definicion del compilador
 #
-CC = g++ -Wno-write-strings
+CC = g++ -Wno-write-strings -std=c++11
 C=	gcc -Wno-write-strings
 
 # orden que sera ejecutada por defecto
 #
-default:	$(CARPETAS) $(SOURCE_LEX) $(SOURCES) $(TARGETS)  
+default:	$(CARPETAS) $(OBJ_LEX) $(SOURCES) $(TARGETS)  
 
 # regla de ejecucion
 #
-$(SOURCE_LEX):	$(LEX)
-	lex	$^
-	$(C) $(CFLAGS) (SOURCE_LEX) -o obj/main.o
+$(OBJ_LEX):	$(SOURCE_LEX)
+	$(CC) $(CXXFLAGS) $^ -o $@
 $(CARPETAS):
 	mkdir -p $(CARPETAS)
 $(TARGETS):	$(OBJECTS)	
-	$(CC) -o $@ $^ $(LDFLAGS) main.o
+	$(CC) -o $@ $^ obj/main.o $(LDFLAGS)
 $(OBJECTS):
 	$(CC) $(CXXFLAGS) src/$(@F:.o=.cpp) -o $@
+$(SOURCE_LEX):	$(LEX)
+	lex	$^
 
 .PHONY: depuracion
 depuracion :
@@ -63,6 +65,8 @@ programa:
 redo:
 	rm -f $(TARGETS)
 	rm -f $(OBJECTS)
+	rm -f $(OBJ_LEX)
+	rm -f $(SOURCE_LEX)
 	make
 
 #

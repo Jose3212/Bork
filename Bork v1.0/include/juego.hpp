@@ -14,5 +14,6 @@ public:
     bool juego_en_marcha(){return m1.juego_en_marcha();}
     void mapa();
     bool combate(Monstruo mons);
+    void mostrar_inventario();
 };
 #endif

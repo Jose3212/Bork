@@ -3,6 +3,9 @@ Juego::Juego(Jugador j1){
     this->j1 = j1;
     m1.inicia_juego(j1);
 }
+void Juego::mostrar_inventario(){
+    m2.mostrar_inventario(j1.get_inventario());
+}
 void Juego::moverse(Jugador::movimiento direccion){
     int opcion;
     Objeto mapa(2),llave(4),espada(1);
@@ -33,16 +36,27 @@ void Juego::moverse(Jugador::movimiento direccion){
     }
     else if(opcion == 4){
         Monstruo mons(50,6);
-        combate_r = combate(mons);
-        if(combate_r){
-            llave = true;
-            m2.has_ganado();
-            m2.puntuacion(j1.get_tesoros());
-            m1.fin_juego();
+        string accion;
+        accion = m2.wait();
+        if (accion == "huye"){
+            if(rand()%4+1==4){
+                m2.escapas();
+            }
+            else goto combate;
         }
         else{
-            j1.pierde();
-            m1.fin_juego();
+            combate:
+            combate_r = combate(mons);
+            if(combate_r){
+                llave = true;
+                m2.has_ganado();
+                m2.puntuacion(j1.get_tesoros());
+                m1.fin_juego();
+            }
+            else{
+                j1.pierde();
+                m1.fin_juego();
+            }
         }
     }
     else if(opcion == 5){

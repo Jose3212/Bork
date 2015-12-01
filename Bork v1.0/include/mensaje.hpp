@@ -2,7 +2,10 @@
 #define _MENSAJES
 //#include "mapa.hpp"
 //#include "jugador.hpp"
+#include "objeto.hpp"
 #include <iostream>
+#include <string>
+#include <vector>
 using namespace std;
 class Mensaje {
 public:
@@ -29,5 +32,8 @@ public:
     void has_ganado();
     void puntuacion(int tesoros);
     void encuentras_espada();
+    string wait();
+    void escapas();
+    void mostrar_inventario(vector <Objeto> ob);
 };
 #endif
