@@ -20,5 +20,6 @@ public:
     void salir();
     string get_nombre(){j1.get_nombre();}
     void opciones();
+    void quita(int i);
 };
 #endif

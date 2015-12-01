@@ -2,17 +2,40 @@
     #include "juego.hpp"
     #include <unistd.h>
     string direc;
+    char c;
     Juego j;
-    int juega();
+    int obj;
     Objeto mapa(2), espada(1);
 %}
-uso (usar|uso|equipar|usa)
+uso (usar|uso|equipar|usa|equipa)
 girar   (giro|girar|gira)
 direccion   (izquierda|derecha)
-avanzar (delante|adelante)
+avanzar (delante|adelante|avanza)
 detras (detras|atras)
+tira (deshecha|tira|quita|quitar)
 salir (salir|Salir|exit|quit)
 %%
+{tira} {cout<<"¿Que objeto deshechas?"<<endl;
+        cin >> c;
+        switch(c){
+        case '1':
+            j.quita(0);
+            break;
+        case '2':
+            j.quita(1);
+            break;
+        case '3':
+            j.quita(2);
+            break;
+        case '4':
+            j.quita(3);
+            break;
+        case '5':
+            j.quita(4);
+            break;
+        }
+        return 0;
+    }
 {uso}" mapa"   {j.usa(mapa);return 0;}
 {uso}" espada"  {j.usa(espada);return 0;}
 {avanzar}  {j.moverse(Jugador::ADELANTE);return 0;}

@@ -188,16 +188,16 @@ void Mapa::observar(){
             det=1;
             break;
         case SUR:
-            iz=0;
-            der=1;
+            iz=1;
+            der=0;
             del=3;
             det=2;
             break;
         case ESTE:
             iz=2;
             der=3;
-            del=1;
-            det=0;
+            del=0;
+            det=1;
             break;        
     }
     mapa_mensaje.comenta_evento(izquierda, iz);

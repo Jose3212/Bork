@@ -15,6 +15,7 @@ void Juego::moverse(Jugador::movimiento direccion){
     Objeto mapa(2),llave(4),espada(1);
     bool combate_r;
     opcion=m1.moverse(direccion);
+    m1.observar();
     //if (opcion == 0)m1.observar();
     if(opcion == 1){
         Monstruo mons(rand()%20+1,rand()%5+1);
@@ -38,9 +39,11 @@ void Juego::moverse(Jugador::movimiento direccion){
                 m1.fin_juego();
             }
         }
+        m1.modifica(Mapa::BOSQUE);
     }
     else if(opcion == 2){
         j1.aniade_tesoro();
+         m1.modifica(Mapa::BOSQUE);
     }
     else if(opcion == 3){
         if(!mapa_1){
@@ -48,6 +51,7 @@ void Juego::moverse(Jugador::movimiento direccion){
             j1.aniade_a_inventario(mapa);
         }
         m2.tienes_mapa();
+        m1.modifica(Mapa::BOSQUE);
     }
     else if(opcion == 4){
         Monstruo mons(50,6);
@@ -65,10 +69,10 @@ void Juego::moverse(Jugador::movimiento direccion){
     }
 
     else if(opcion == 5){
+        m1.modifica(Mapa::BOSQUE);
         m2.encuentras_espada();
         j1.aniade_a_inventario(espada);
     }
-    m1.observar();
 }
 void Juego::mapa(){
     m1.muestra_mapa();
@@ -134,6 +138,11 @@ void Juego::salir(){
     m1.fin_juego();
 }
 void Juego::opciones(){
-    mostrar_inventario();
-    cout << "Introduzca accion: "<< j1.get_nombre() <<endl;
+    if(juego_en_marcha()){
+        mostrar_inventario();
+        cout << "Introduzca accion: "<< j1.get_nombre() <<endl;
+    }
+}
+void Juego::quita(int i){
+    j1.elimina_de_inventario(i);
 }

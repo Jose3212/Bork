@@ -41,5 +41,6 @@ public:
     bool juego_en_marcha(){return juego;}
     void muestra_mapa();
     void fin_juego(){juego = false;}
+    void modifica(zonas a){mapa[posicion_x][posicion_y]=a;}
 };
 #endif
