@@ -6,6 +6,7 @@ private:
     Mapa m1;
     Jugador j1;
     Mensaje m2;
+    bool mapa_1, llave;
 public:
     Juego( Jugador j1);
     void moverse(Jugador::movimiento direccion);

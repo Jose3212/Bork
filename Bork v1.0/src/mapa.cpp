@@ -29,6 +29,15 @@ Mapa::Mapa(){
                 }
             }
         }
+        for(int m = 1; m < SIZE-1; m++){
+            for(int n = 1; n < SIZE-1; n++){
+                if((rand()%10)==10){
+                    mapa[m][n]=TESORO;
+                }
+            }
+        }
+        mapa[rand()%(SIZE-1)+1][rand()%(SIZE-1)+1]=ESPECIAL1;
+        mapa[rand()%(SIZE-1)+1][rand()%(SIZE-1)+1]=ESPECIAL2;
 }
 void Mapa::genera(int &posx, int &posy, Mapa::zonas z){
     int anchura, altura;
@@ -49,12 +58,13 @@ void Mapa::genera(int &posx, int &posy, Mapa::zonas z){
 void Mapa::inicia_juego(Jugador j1){
     this -> j1= j1;
     juego = true;
-    posicion_y = rand()%SIZE;
-    posicion_x = rand()%SIZE;
+    posicion_y = rand()%(SIZE-1)+1;
+    posicion_x = rand()%(SIZE-1)+1;
     pos = NORTE;
     
 }
-void Mapa::moverse(Jugador::movimiento direccion){
+int Mapa::moverse(Jugador::movimiento direccion){
+    int evento;
     if (direccion == Jugador::ADELANTE){
         switch (pos){
             case NORTE:
@@ -89,7 +99,8 @@ void Mapa::moverse(Jugador::movimiento direccion){
     else {
         mapa_mensaje.fallo_movimiento(" Al moverse ");
     }
-    even1_principal.siguiente_evento(mapa[posicion_x][posicion_y]);
+    evento = even1_principal.siguiente_evento(mapa[posicion_x][posicion_y]);
+    return evento;
 }
 void Mapa::calcular_nueva_orientacion(Jugador::movimiento giro){
     switch (pos){
@@ -194,7 +205,10 @@ void Mapa::muestra_mapa(){
     for(int i = 0; i < SIZE; i++){
         cout << " ";
         for(int j = 0; j < SIZE; j++){
-            cout << mapa[i][j] << "-";
+            if((i==posicion_x) && (j==posicion_y)){
+                cout << "X" << "-";
+            }
+            else cout << mapa[i][j] << "-";
         }
         cout<< endl;
     }

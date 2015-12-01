@@ -33,6 +33,7 @@ public:
     string get_nombre();
     vector<Objeto> get_inventario(){return inventario;}
     int get_hp(){return hp;}
+    int get_tesoros(){return num_tesoros;}
     Objeto get_equipo(){return equipado;}
     int get_ataque(){return ataque;}
 };

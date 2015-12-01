@@ -2,10 +2,28 @@
 Evento::Evento(){
     tipo = 0;
 }
-void Evento::revela_evento(){
-    int monstruo = rand()%6+1;
-    if(monstruo == 6){
-        mensaje_evento.aparece_monstruo();
+int Evento::revela_evento(){
+    int monstruo = 0;
+    if (tipo == 4){
+        if(rand()%20==20){
+            mensaje_evento.aparece_monstruo();
+            monstruo = 1;
+        }
+        else if(rand()%4==4){
+            monstruo=5;
+        }
+        else {
+            mensaje_evento.ganas_tesoro();
+            monstruo= 2;
+        }
+    }
+    else if (tipo == 5){
+        mensaje_evento.encuentras_mapa();
+        monstruo = 3;
+    }
+    else if (tipo == 6){
+        mensaje_evento.encuentras_llave();
+        monstruo = 4;
     }
     else{
         switch(tipo){
@@ -23,8 +41,9 @@ void Evento::revela_evento(){
                 break;
         }
     }
+    return monstruo;
 }
-void Evento::siguiente_evento(int posicion_nueva){
+int Evento::siguiente_evento(int posicion_nueva){
     tipo = posicion_nueva;
-    revela_evento();
+    return revela_evento();
 }

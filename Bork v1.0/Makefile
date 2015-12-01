@@ -4,8 +4,10 @@
 #
 TARGETS= ./bin/Bork
 
-SOURCES=	src/jugador.cpp src/main.cpp src/evento.cpp src/juego.cpp src/mapa.cpp src/mensaje.cpp src/monstruo.cpp
+SOURCES=	src/jugador.cpp src/evento.cpp src/juego.cpp src/mapa.cpp src/mensaje.cpp src/monstruo.cpp
 TEMP = src/*~ include/*~
+SOURCE_LEX=	src/lex.yy.c
+LEX=  src/main.l
 OBJECTS=	$(SOURCES:src/%.cpp=obj/%.o)
 DAT	=	data
 INCLUDE = include
@@ -26,17 +28,21 @@ LDFLAGS=  -lfl
 # definicion del compilador
 #
 CC = g++ -Wno-write-strings
+C=	gcc -Wno-write-strings
 
 # orden que sera ejecutada por defecto
 #
-default:	$(CARPETAS) $(SOURCES) $(TARGETS)
+default:	$(CARPETAS) $(SOURCE_LEX) $(SOURCES) $(TARGETS)  
 
 # regla de ejecucion
 #
+$(SOURCE_LEX):	$(LEX)
+	lex	$^
+	$(C) $(CFLAGS) (SOURCE_LEX) -o obj/main.o
 $(CARPETAS):
 	mkdir -p $(CARPETAS)
 $(TARGETS):	$(OBJECTS)	
-	$(CC) -o $@ $^ $(LDFLAGS)
+	$(CC) -o $@ $^ $(LDFLAGS) main.o
 $(OBJECTS):
 	$(CC) $(CXXFLAGS) src/$(@F:.o=.cpp) -o $@
 

@@ -4,8 +4,51 @@ Juego::Juego(Jugador j1){
     m1.inicia_juego(j1);
 }
 void Juego::moverse(Jugador::movimiento direccion){
-    m1.moverse(direccion);
-    m1.observar();
+    int opcion;
+    Objeto mapa(2),llave(4),espada(1);
+    bool combate_r;
+    opcion=m1.moverse(direccion);
+    if (opcion == 0)m1.observar();
+    else if(opcion == 1){
+        Monstruo mons(rand()%20+1,rand()%5+1);
+        combate_r = combate(mons);
+        if (combate_r){
+            m2.ganas_tesoro();
+            j1.aniade_tesoro();
+        }
+        else {
+            j1.pierde();
+            m1.fin_juego();
+        }
+    }
+    else if(opcion == 2){
+        j1.aniade_tesoro();
+    }
+    else if(opcion == 3){
+        if(!mapa_1){
+            mapa_1 = true;
+            j1.aniade_a_inventario(mapa);
+        }
+        m2.tienes_mapa();
+    }
+    else if(opcion == 4){
+        Monstruo mons(50,6);
+        combate_r = combate(mons);
+        if(combate_r){
+            llave = true;
+            m2.has_ganado();
+            m2.puntuacion(j1.get_tesoros());
+            m1.fin_juego();
+        }
+        else{
+            j1.pierde();
+            m1.fin_juego();
+        }
+    }
+    else if(opcion == 5){
+        m2.encuentras_espada();
+        j1.aniade_a_inventario(espada);
+    }
 }
 void Juego::mapa(){
     m1.muestra_mapa();

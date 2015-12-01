@@ -76,3 +76,24 @@ void Mensaje::vidas(int jugador, int monstruo){
     cout<<"Tienes: "<<jugador<<" puntos de vida."<<endl;
     cout<<"El monstruo tiene: "<<monstruo<<" puntos de vida."<<endl;
 }
+void Mensaje::ganas_tesoro(){
+    cout<<"Encuentras un Tesoro, bien hecho."<<endl;
+}
+void Mensaje::encuentras_mapa(){
+    cout<<"Has encontrado un mapa, ya puedes orientarte."<<endl;
+}
+void Mensaje::encuentras_llave(){
+    cout<<"Enhorabuena, has encontrado la llave."<<endl;
+}
+void Mensaje::tienes_mapa(){
+    cout<<"Encuentras un mapa, pero ya tienes uno."<<endl;
+}
+void Mensaje::has_ganado(){
+    cout<<"Has cumplido con tu cometido, puedes regresar a casa"<<endl;
+}
+void Mensaje::puntuacion(int tesoros){
+    cout<<"Finalizas la aventura con: "<<tesoros<<" tesoros."<<endl;
+}
+void Mensaje::encuentras_espada(){
+    cout<<"Encuentras una espada, eres más eficiente combatiendo."<<endl;
+}

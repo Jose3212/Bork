@@ -22,5 +22,12 @@ public:
     void combate_ganado();
     void combate_perdido();
     void vidas(int jugador, int monstruo);
+    void ganas_tesoro();
+    void encuentras_mapa();
+    void encuentras_llave();
+    void tienes_mapa();
+    void has_ganado();
+    void puntuacion(int tesoros);
+    void encuentras_espada();
 };
 #endif
