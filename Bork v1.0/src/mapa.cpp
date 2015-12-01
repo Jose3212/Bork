@@ -172,31 +172,31 @@ void Mapa::observar(){
     int iz, der, del, det;
     if(posicion_y>0)izquierda = (Mapa::zonas) mapa[posicion_x][posicion_y-1];
     if(posicion_y<SIZE)derecha = (Mapa::zonas) mapa[posicion_x][posicion_y+1];
-    if(posicion_x<SIZE)delante = (Mapa::zonas) mapa[posicion_x+1][posicion_y];
-    if(posicion_x>0)detras = (Mapa::zonas) mapa[posicion_x-1][posicion_y];
+    if(posicion_x<SIZE)delante = (Mapa::zonas) mapa[posicion_x-1][posicion_y];
+    if(posicion_x>0)detras = (Mapa::zonas) mapa[posicion_x+1][posicion_y];
     switch(pos){
         case NORTE:
             iz=0;
-            der=2;
-            del=1;
+            der=1;
+            del=2;
             det=3;
             break;
         case OESTE:
             iz=3;
-            der=1;
+            der=2;
             del=0;
-            det=2;
-            break;
-        case SUR:
-            iz=2;
-            der=0;
-            del=3;
             det=1;
             break;
+        case SUR:
+            iz=0;
+            der=1;
+            del=3;
+            det=2;
+            break;
         case ESTE:
-            iz=1;
+            iz=2;
             der=3;
-            del=2;
+            del=1;
             det=0;
             break;        
     }

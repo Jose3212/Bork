@@ -1,5 +1,6 @@
 %{
     #include "juego.hpp"
+    #include <unistd.h>
     string direc;
     Juego j;
     int juega();
@@ -8,7 +9,6 @@
 uso (usar|uso|equipar|usa)
 girar   (giro|girar|gira)
 direccion   (izquierda|derecha)
-huye    (huir|huyo|corro)
 avanzar (delante|adelante)
 detras (detras|atras)
 salir (salir|Salir|exit|quit)
@@ -33,6 +33,8 @@ int main(){
     Jugador j1(direc);
     j.aniade_jugador(j1);
     yyin = stdin;
+    cout<<"Tu aventura empieza a mediodia, deberas encontrar la llave"<<endl<<"Para poder volver a tu casa con las riquezas ganadas"<<endl;
+    usleep(5000000);
     while (j.juego_en_marcha()){
         j.opciones();
         yylex();

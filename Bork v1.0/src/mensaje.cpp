@@ -36,6 +36,9 @@ void Mensaje::comenta_evento(int tipo, int orientacion){
         case 3:
             cout<<"Encuentras un bosque."<<endl;
             break;
+        case 4:
+            cout<<"Encuentras un tesoro."<<endl;
+            break;
         
     }
 }

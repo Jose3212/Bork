@@ -498,11 +498,12 @@ char *yytext;
 #line 1 "main.l"
 #line 2 "main.l"
     #include "juego.hpp"
+    #include <unistd.h>
     string direc;
     Juego j;
     int juega();
     Objeto mapa(2), espada(1);
-#line 506 "lex.yy.c"
+#line 507 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -718,7 +719,7 @@ YY_DECL
 	{
 #line 15 "main.l"
 
-#line 722 "lex.yy.c"
+#line 723 "lex.yy.c"
 
 	while ( 1 )		/* loops until end-of-file is reached */
 		{
@@ -816,7 +817,7 @@ YY_RULE_SETUP
 #line 28 "main.l"
 ECHO;
 	YY_BREAK
-#line 820 "lex.yy.c"
+#line 821 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1821,6 +1822,8 @@ int main(){
     Jugador j1(direc);
     j.aniade_jugador(j1);
     yyin = stdin;
+    cout<<"Tu aventura empieza a mediodia, deberas encontrar la llave"<<endl<<"Para poder volver a tu casa con las riquezas ganadas"<<endl;
+    usleep(5000000);
     while (j.juego_en_marcha()){
         j.opciones();
         yylex();
