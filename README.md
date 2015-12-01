@@ -18,3 +18,8 @@ monstruo por la llave.
 Las instrucciones aceptadas por el programa son:
 avanza, gira (izquierda o derecha), equipa espada, usa mapa (en el caso de tenerlo), salir
 (finaliza el programa), tirar(deshecha un objeto del inventario, dada su posicion).
+INSTALACION:
+
+Hay que situarse con la terminal en el directorio del programa, tras ello ejecutar 'make',
+'make redo'(en el caso de que la primera opcion no haga nada), y tras ello se nos creará
+el ejecutable en la carptea bin, desde donde podremos ejecutarlo. O bien usando 'make programa'.
