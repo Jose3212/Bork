@@ -82,5 +82,5 @@ superclean:
 tgz:
 	rm -f $(OBJECTS)
 	rm -f $(TEMP)
-	tar -zcf practica.tgz -C ./src/ . -C ../bin/ . -C ../include/ .
+	tar -zcf practica_lex.tgz .
 
