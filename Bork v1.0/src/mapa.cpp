@@ -182,10 +182,10 @@ void Mapa::observar(){
             det=3;
             break;
         case OESTE:
-            iz=3;
-            der=2;
-            del=0;
-            det=1;
+            iz=2;
+            der=3;
+            del=1;
+            det=0;
             break;
         case SUR:
             iz=1;
@@ -194,8 +194,8 @@ void Mapa::observar(){
             det=2;
             break;
         case ESTE:
-            iz=2;
-            der=3;
+            iz=3;
+            der=2;
             del=0;
             det=1;
             break;        
