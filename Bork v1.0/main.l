@@ -14,12 +14,16 @@ derecha (derecha|der)
 avanzar (delante|adelante|avanza)
 detras (detras|atras)
 tira (deshecha|tira|quita|quitar)
+auxiliar    {girar}" "(a la|hacia la|"para la")
 salir (salir|Salir|exit|quit)
-auxiliar    (a|hacia|para la)
+
+
 %%
 "dev_mapa"  {j.mapa();return 0;}
 {girar}" "{izquierda}    {j.moverse(Jugador::GIRA_IZQUIERDA);return 0;}
 {girar}" "{derecha}  {j.moverse(Jugador::GIRA_DERECHA);return 0;}
+{auxiliar}" "{izquierda}    {j.moverse(Jugador::GIRA_IZQUIERDA);return 0;}
+{auxiliar}" "{derecha}  {j.moverse(Jugador::GIRA_DERECHA);return 0;}
 {tira} {cout<<"¿Que objeto deshechas?"<<endl;
         cin >> c;
         switch(c){
